@@ -42,6 +42,7 @@ Ablock::Ablock()
 	blockMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("BlockMesh0"));
 	blockMesh->SetupAttachment(root);
 	// Set start parameter
+	blockMesh->OnClicked.AddDynamic(this, &Ablock::BlockClicked);
 	blockMesh->SetStaticMesh(ConstructorStatics.cubeMesh.Get());
 	blockMesh->SetRelativeRotation(FRotator(45.f, -90.f, 45.f));
 	blockMesh->SetRelativeLocation(FVector(-35.f, -25.f, 0.f));
@@ -89,5 +90,19 @@ void Ablock::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
+
 }
 
+
+void Ablock::BlockClicked(UPrimitiveComponent* ClickedComp, FKey ButtonClicked)
+{
+	// Check we are not already active
+	if (!bIsActive)
+	{
+		bIsActive = true;
+
+		// destroy actor
+		Destroy();
+
+	}
+}

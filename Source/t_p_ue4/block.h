@@ -7,24 +7,11 @@
 #include "block.generated.h"
 
 UCLASS()
-class T_P_UE4_API Ablock : public AActor
+class Ablock : public AActor
 {
 	GENERATED_BODY()
 	
 public:	
-	// Sets default values for this actor's properties
-	Ablock();
-
-protected:
-	// Called when the game starts or when spawned
-	virtual void BeginPlay() override;
-
-public:	
-	// Called every frame
-	virtual void Tick(float DeltaTime) override;
-
-
-
 	/** Dummy root component */
 	UPROPERTY(EditAnywhere)
 		class USceneComponent* root;
@@ -32,6 +19,19 @@ public:
 	/** StaticMesh component for the clickable block */
 	UPROPERTY(EditAnywhere)
 		class UStaticMeshComponent* blockMesh;
+
+protected:
+	// Called when the game starts or when spawned
+	virtual void BeginPlay() override;
+
+public:	
+	// Sets default values for this actor's properties
+	Ablock();
+	/** Are we currently active? */
+	bool bIsActive;
+	void HandleClicked();
+	// Called every frame
+	virtual void Tick(float DeltaTime) override;
 
 	/** Pointer to white material used on the focused block */
 	UPROPERTY()
@@ -53,7 +53,7 @@ public:
 	UPROPERTY()
 		class UMaterialInstance* m_Red;
 
-	/** Grid that owns us */
-	UPROPERTY()
-		class Ablock_Grid* OwningGrid;
+	/** Handle the block being clicked */
+	UFUNCTION()
+		void BlockClicked(UPrimitiveComponent* ClickedComp, FKey ButtonClicked);
 };

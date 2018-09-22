@@ -33,11 +33,6 @@ void Ablock_Grid::BeginPlay()
 
 			UE_LOG(LogActor, Warning, TEXT("new Block"))
 
-				// Tell the block about its owner
-				if (NewBlock != nullptr)
-				{
-					NewBlock->OwningGrid = this;
-				}
 			position_old.Y = position_old.Y + y_offset;
 			// checked last position x and change value
 			if (position_old.X < x_currentGrid) {
