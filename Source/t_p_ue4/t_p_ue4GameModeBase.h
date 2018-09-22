@@ -14,7 +14,8 @@ class T_P_UE4_API At_p_ue4GameModeBase : public AGameModeBase
 {
 	GENERATED_BODY()
 	
-	
+public:
+	At_p_ue4GameModeBase();
 	
 	
 };
