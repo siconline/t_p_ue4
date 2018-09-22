@@ -24,17 +24,16 @@ public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
-	/** Number of blocks along each side of grid */
-	UPROPERTY(EditAnywhere)
-		int32 size;
-
+	// position from the last block
 	UPROPERTY()
 		FVector position_old;
-
+	// variable to switch different block position
 	UPROPERTY()
 		float x_offset;
-
+	// variable to switch different block position
 	UPROPERTY()
 		float y_offset;
-
+	// current position at x for generated blocks
+	UPROPERTY()
+		float x_currentGrid;
 };

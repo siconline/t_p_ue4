@@ -66,7 +66,7 @@ void Ablock::BeginPlay()
 	int32 maxSize = 4;
 	int randomValue = FMath::RandRange(0, maxSize - 1);
 	UE_LOG(LogActor, Warning, TEXT("-->:  %d"), randomValue);
-
+	// check generated random Value and set material at mesh
 	if (randomValue == 0) {
 		blockMesh->SetMaterial(0, m_Blue);
 	}
