@@ -1,7 +1,7 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 #include "block_Grid.h"
-#include "block.h"
+#include "EngineUtils.h"
 #include "Engine/World.h"
 
 
@@ -22,6 +22,7 @@ Ablock_Grid::Ablock_Grid()
 void Ablock_Grid::BeginPlay()
 {
 	Super::BeginPlay();
+	
 	// Loop to set new x grid line
 	for (int32 j = 0; j < 3; j++) {
 		// Loop to spawn each block
@@ -31,7 +32,11 @@ void Ablock_Grid::BeginPlay()
 			// Spawn a block
 			Ablock* NewBlock = GetWorld()->SpawnActor<Ablock>(blockLocation, FRotator(0, 0, 0));
 
-			UE_LOG(LogActor, Warning, TEXT("new Block"))
+			// Make array with actors block
+			Ablock* actor = NewBlock;
+			blocks.Add(actor);
+			
+			UE_LOG(LogActor, Warning, TEXT("new Block"));
 
 			position_old.Y = position_old.Y + y_offset;
 			// checked last position x and change value
@@ -46,6 +51,8 @@ void Ablock_Grid::BeginPlay()
 		x_currentGrid -= 140.f;// change variable for next loop, new line for next seven blocks
 		position_old = FVector(x_currentGrid, 0.f, 0.f);
 	}
+	// Test to delete actor
+	//blocks[5]->Destroy();
 }
 
 // Called every frame

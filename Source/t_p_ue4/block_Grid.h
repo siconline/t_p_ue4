@@ -3,6 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "block.h"
 #include "GameFramework/Actor.h"
 #include "block_Grid.generated.h"
 
@@ -36,4 +37,7 @@ public:
 	// current position at x for generated blocks
 	UPROPERTY()
 		float x_currentGrid;
+
+
+	TArray<Ablock*> blocks;
 };

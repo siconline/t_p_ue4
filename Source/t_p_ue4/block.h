@@ -56,4 +56,6 @@ public:
 	/** Handle the block being clicked */
 	UFUNCTION()
 		void BlockClicked(UPrimitiveComponent* ClickedComp, FKey ButtonClicked);
+
+	TArray<Ablock*> blockArray;
 };

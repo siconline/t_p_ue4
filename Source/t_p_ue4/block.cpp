@@ -1,6 +1,7 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 #include "block.h"
+#include "block_Grid.h"
 #include "UObject/ConstructorHelpers.h"
 #include "Components/StaticMeshComponent.h"
 #include "Materials/MaterialInstance.h"
@@ -55,7 +56,7 @@ Ablock::Ablock()
 	m_Orange = ConstructorStatics.m_Orange.Get();
 	m_Red = ConstructorStatics.m_Red.Get();
 	
-
+	
 }
 
 // Called when the game starts or when spawned
@@ -100,9 +101,10 @@ void Ablock::BlockClicked(UPrimitiveComponent* ClickedComp, FKey ButtonClicked)
 	if (!bIsActive)
 	{
 		bIsActive = true;
-
 		// destroy actor
-		Destroy();
+		//Destroy();
+		// scale actor
+		blockMesh->SetRelativeScale3D(FVector(0.9f, 0.9f, 1.f));
 
 	}
 }
