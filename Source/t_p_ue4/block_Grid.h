@@ -24,6 +24,17 @@ public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
-	
-	
+	/** Number of blocks along each side of grid */
+	UPROPERTY(EditAnywhere)
+		int32 size;
+
+	UPROPERTY()
+		FVector position_old;
+
+	UPROPERTY()
+		float x_offset;
+
+	UPROPERTY()
+		float y_offset;
+
 };

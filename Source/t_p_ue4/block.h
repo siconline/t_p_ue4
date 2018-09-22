@@ -53,5 +53,7 @@ public:
 	UPROPERTY()
 		class UMaterialInstance* m_Red;
 
-	
+	/** Grid that owns us */
+	UPROPERTY()
+		class Ablock_Grid* OwningGrid;
 };
