@@ -22,9 +22,9 @@ Ablock::Ablock()
 			: cubeMesh(TEXT("/Game/Shapes/Sh_Cube.Sh_Cube"))
 			, m_Base(TEXT("/Game/Materials/M_BasicWall.M_BasicWall"))
 			, m_Blue(TEXT("/Game/Materials/M_Blue.M_Blue"))
-			, m_Green(TEXT("/Game/Materials/M_Blue.M_Green"))
-			, m_Orange(TEXT("/Game/Materials/M_Blue.M_Orange"))
-			, m_Red(TEXT("/Game/Materials/M_Blue.M_Red"))
+			, m_Green(TEXT("/Game/Materials/M_Green.M_Green"))
+			, m_Orange(TEXT("/Game/Materials/M_Orange.M_Orange"))
+			, m_Red(TEXT("/Game/Materials/M_Red.M_Red"))
 		{
 		}
 	};
@@ -45,8 +45,7 @@ Ablock::Ablock()
 	blockMesh->SetStaticMesh(ConstructorStatics.cubeMesh.Get());
 	blockMesh->SetRelativeRotation(FRotator(45.f, -90.f, 45.f));
 	blockMesh->SetRelativeLocation(FVector(-35.f, -25.f, 0.f));
-
-	blockMesh->SetMaterial(0, ConstructorStatics.m_Blue.Get());
+	blockMesh->SetMaterial(0, ConstructorStatics.m_Base.Get());
 
 	// Save a pointer to the materials
 	m_Base = ConstructorStatics.m_Base.Get();
@@ -62,6 +61,26 @@ Ablock::Ablock()
 void Ablock::BeginPlay()
 {
 	Super::BeginPlay();
+
+	// Set random material at block
+	int32 maxSize = 4;
+	int randomValue = FMath::RandRange(0, maxSize - 1);
+	UE_LOG(LogActor, Warning, TEXT("-->:  %d"), randomValue);
+
+	if (randomValue == 0) {
+		blockMesh->SetMaterial(0, m_Blue);
+	}
+	else if(randomValue == 1) {
+		blockMesh->SetMaterial(0, m_Green);
+	}
+	else if (randomValue == 2) {
+		blockMesh->SetMaterial(0, m_Orange);
+	}
+	else
+	{
+		blockMesh->SetMaterial(0, m_Red);
+	}
+
 	
 }
 

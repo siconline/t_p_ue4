@@ -52,5 +52,6 @@ public:
 	/** Pointer to red material used on active blocks */
 	UPROPERTY()
 		class UMaterialInstance* m_Red;
+
 	
 };
