@@ -10,7 +10,7 @@
  * 
  */
 UCLASS()
-class T_P_UE4_API At_p_ue4_PlayerController : public APlayerController
+class At_p_ue4_PlayerController : public APlayerController
 {
 	GENERATED_BODY()
 	
